@@ -58,6 +58,11 @@ app.get('/series/popular', async(req, res) => {
     await fetchData(url, res)
 })
 
+app.get('/actors', async(req, res) => {
+    const url = 'https://api.themoviedb.org/3/person/popular?language=en-US&page=1'
+    await fetchData(url, res)
+})
+
 app.post('/search', async(req, res) => {
     const searchTerm = req.body.query
     if(!searchTerm || searchTerm.trim() === '') return res.status(400).json({error: "O termo de pesquisa é obrigatório."})
