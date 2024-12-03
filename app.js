@@ -9,6 +9,7 @@ app.use(cors())
 const port = process.env.PORT || 3001
 
 const apiKey = process.env.API_KEY
+
 if(!apiKey) {
     console.error('API Key não encontrada')
     process.exit(1)
@@ -71,6 +72,17 @@ app.post('/search', async(req, res) => {
 
     const url = `https://api.themoviedb.org/3/search/multi?query=${encodedSearchTerm}&include_adult=false&language=en-US&page=1`
     await fetchData(url, res)
+})
+
+app.get('/genre/:id', async(req, res) => {
+
+    const id = req.params.id
+    if(!id || isNaN(id)) return res.status(400).json({error: "Gênero do filme inválido ou não informado"})
+
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`
+    
+    await fetchData(url, res)
+    
 })
 
 app.listen(port, () => {
