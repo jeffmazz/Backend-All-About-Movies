@@ -127,7 +127,7 @@ app.get('/genre/:id', async(req, res) => {
         const originalArray = data.results
         const filteredArray = originalArray.map(item => ({
             id: item.id,
-            backdrop_path: item.backdrop_path
+            poster_path: item.poster_path
         }))
         return res.status(200).json(filteredArray)
     } catch(err) {
