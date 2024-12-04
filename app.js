@@ -96,11 +96,7 @@ app.get('/actors', async(req, res) => {
         const filteredArray = originalArray.map(item => ({
             profile_path: item.profile_path,
             name: item.name,
-            known_for: item.known_for.map(item => ({
-                title: item.title,
-                original_title: item.original_title,
-                vote_average: item.vote_average
-            })),
+            known_for: item.known_for,
             popularity: item.popularity
         }))
         
