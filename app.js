@@ -31,6 +31,7 @@ const fetchData = async(url, res) => {
         const originalArray = data.results
 
         const filteredArray = originalArray.map(item => ({
+            id: item.id,
             backdrop_path: item.backdrop_path,
             poster_path: item.poster_path,
             profile_path: item.profile_path,
@@ -90,6 +91,7 @@ app.get('/actors', async(req, res) => {
         const data = await response.json()
         const originalArray = data.results
         const filteredArray = originalArray.map(item => ({
+            id: item.id,
             profile_path: item.profile_path,
             name: item.name,
             known_for: item.known_for,
@@ -124,6 +126,7 @@ app.get('/genre/:id', async(req, res) => {
         const data = await response.json()
         const originalArray = data.results
         const filteredArray = originalArray.map(item => ({
+            id: item.id,
             backdrop_path: item.backdrop_path
         }))
         return res.status(200).json(filteredArray)
