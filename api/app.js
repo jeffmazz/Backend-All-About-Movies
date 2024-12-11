@@ -145,6 +145,4 @@ app.get('/genre/:id', async(req, res) => {
     
 })
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port} `)
-})
+export default app
