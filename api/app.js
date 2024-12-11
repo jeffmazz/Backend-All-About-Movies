@@ -145,4 +145,6 @@ app.get('/genre/:id', async(req, res) => {
     
 })
 
-export default app
+export default (req, res) => {
+    app(req, res);  // Chama o app express para processar a requisição
+}
